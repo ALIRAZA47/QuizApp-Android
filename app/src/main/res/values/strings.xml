@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Quizyy</string>
+    <string name="DontHaveAnAccount"><u>Do not have an account? Signup</u></string>
+    <string name="HaveAnAccount"><u>Already have an account? Login</u></string>
 </resources>
