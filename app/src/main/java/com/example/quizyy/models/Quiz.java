@@ -24,11 +24,11 @@ public class Quiz {
         this.title = title;
     }
 
-    public Map<String, Question> getQuestions() {
+    public HashMap<String, Question> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(Map<String, Question> questions) {
+    public void setQuestions(HashMap<String, Question> questions) {
         this.questions = questions;
     }
 
@@ -41,6 +41,6 @@ public class Quiz {
                 '}';
     }
 
-    public Map<String, Question> questions = new HashMap();
+    public HashMap<String, Question> questions = new HashMap();
 
 }

@@ -9,9 +9,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.quizyy.R;
@@ -19,10 +21,16 @@ import com.example.quizyy.adapters.QuizAdapter;
 import com.example.quizyy.models.Quiz;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseFirestore fireStore;
@@ -45,6 +53,32 @@ public class MainActivity extends AppCompatActivity {
         setupFireStore();
         setupDrawerLayout();
         setupRecyclerView();
+        setupDatePicker();
+    }
+
+    private void setupDatePicker() {
+        FloatingActionButton btnDatePicker;
+        Intent intent = new Intent(this, QuestionActivity.class);
+        btnDatePicker = findViewById(R.id.btn_date_picker);
+        btnDatePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MaterialDatePicker datePicker = MaterialDatePicker.Builder.datePicker().build();
+                datePicker.show(getSupportFragmentManager(), "DatePicker");
+                datePicker.addOnPositiveButtonClickListener(selection -> {
+                    SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy");
+                    String dateStr = dateFormatter.format(selection);
+                    Log.i("Date", "onPositiveButtonClick: "+ dateStr);
+                    intent.putExtra("DATE", dateStr);
+                    startActivity(intent);
+                });
+                datePicker.addOnNegativeButtonClickListener(v1 -> {
+                    Log.i("Date", "onNegativeButtonListener: "+ datePicker.getHeaderText());
+                });
+
+
+            } //end of onclick
+        });
     }
 
     private void setupFireStore() {
@@ -71,18 +105,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView() {
-        Quiz sample = new Quiz();
-        Quiz sample2 = new Quiz();
-        Quiz sample3 = new Quiz();
-//        sample.id="1234";
-        sample.title="ali";
-//        sample2.id="456";
-        sample2.title="raza";
-//        sample3.id="789";
-        sample3.title="khan";
-        quizzes.add(sample);
-        quizzes.add(sample2);
-        quizzes.add(sample3);
         quizRecyclerView = findViewById(R.id.quizRecyclerView);
         adapter = new QuizAdapter(this, quizzes);
         quizRecyclerView.setLayoutManager(new GridLayoutManager(this, 2) );

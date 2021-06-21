@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:id="@+id/mainDrawerLayout"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".activities.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,9 +21,12 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.appbar.MaterialToolbar
+                android:backgroundTint="@color/primaryColor"
                 android:id="@+id/topAppBar"
+                app:navigationIconTint="@color/white"
                 style="@style/Widget.MaterialComponents.Toolbar.Primary"
                 android:layout_width="match_parent"
+                app:titleTextColor="@color/white"
                 android:layout_height="?attr/actionBarSize"
                 app:navigationIcon="@drawable/ic_menu"
                 app:title="@string/app_name" />
@@ -39,7 +43,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appBarLayout">
 
+
+
+
         </androidx.recyclerview.widget.RecyclerView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_date_picker"
+            android:tintMode="multiply"
+            android:backgroundTint="@color/primaryColor"
+            app:tint="@android:color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@color/white"
+            android:layout_marginBottom="675dp"
+            android:contentDescription="date picker"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_baseline_date_range_24" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView

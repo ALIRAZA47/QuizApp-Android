@@ -1,6 +1,7 @@
 package com.example.quizyy.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,8 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quizyy.R;
+import com.example.quizyy.activities.QuestionActivity;
+import com.example.quizyy.models.Question;
 import com.example.quizyy.models.Quiz;
 import com.example.quizyy.utils.ColorPicker;
 import com.example.quizyy.utils.IconPicker;
@@ -48,13 +51,18 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
     @Override
     public void onBindViewHolder(QuizViewHolder holder, int position) {
         String title = quizzes.get(position).title;
+
         holder.quizTitle.setText(title);
         holder.cardContainer.setCardBackgroundColor(Color.parseColor(new ColorPicker().getColors()));
         holder.quizIcon.setImageResource(new IconPicker().getIcons());
         holder.cardContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(context, QuestionActivity.class);
+                intent.putExtra("DATE", quizzes.get(position).title);
+                context.startActivity(intent);
                 Toast.makeText(context,  quizzes.get(position).title, Toast.LENGTH_SHORT).show();
+
             }
         });
     }
