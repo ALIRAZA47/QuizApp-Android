@@ -16,15 +16,17 @@
             android:theme="@style/Theme.Quizyy" />
         <activity android:name=".activities.SignpActivity" />
         <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.LoginIntro" />
-        <activity
-            android:name=".activities.MainActivity"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+        <activity android:name=".activities.LoginIntro" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.MainActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+
         </activity>
     </application>
 

@@ -24,6 +24,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -33,6 +34,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
+    NavigationView navigationView;
     FirebaseFirestore fireStore;
     MaterialToolbar appBar;
     DrawerLayout drawerLayout;
@@ -114,11 +116,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupDrawerLayout() {
+        Intent intentProfile = new Intent(this, ProfileActivity.class);
+        Intent intentSignout = new Intent(this, LoginActivity.class);
+        navigationView = findViewById(R.id.navigationView);
         appBar = findViewById(R.id.topAppBar);
         setSupportActionBar(appBar);
         drawerLayout = findViewById(R.id.mainDrawerLayout);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.app_name, R.string.app_name);
         toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(item -> {
+            if(item.getItemId() == R.id.navProfile){
+                startActivity(intentProfile);
+                finish();
+                drawerLayout.closeDrawers();
+            }
+
+            return true;
+        });
+
+        navigationView.setNavigationItemSelectedListener(item -> {
+            if(item.getItemId() == R.id.navSignout){
+                startActivity(intentSignout);
+                finish();
+                drawerLayout.closeDrawers();
+            }
+
+            return true;
+        });
     }
 
     @Override

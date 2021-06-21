@@ -66,6 +66,7 @@
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
+        android:id="@+id/navigationView"
         android:layout_height="match_parent"
         app:headerLayout="@layout/header_layout"
         app:menu="@menu/drawer_menu"
