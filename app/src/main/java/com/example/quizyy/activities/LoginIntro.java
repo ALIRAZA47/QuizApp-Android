@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -22,7 +23,12 @@ public class LoginIntro extends AppCompatActivity {
 
         //Check if the use is already logged in or not
         if(mAuth.getCurrentUser() != null){
+            Log.i("TAG-Login", "onCreate: USer found and is  ->> " +mAuth.getCurrentUser().getEmail() );
             redirectToActivities("MAIN");
+        }
+        else{
+            Log.i("TAG-Login", "onCreate: USer not found");
+            redirectToActivities("LOGIN");
         }
         btnGetStarted.setOnClickListener(new View.OnClickListener() {
             @Override

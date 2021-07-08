@@ -8,6 +8,11 @@ public class Quiz {
     public String id;
     public String title;
 
+    public Quiz(){}
+    public Quiz(String title) {
+        this.title = title;
+    }
+
     public String getId() {
         return id;
     }

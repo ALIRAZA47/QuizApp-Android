@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".activities.LoginActivity">
 
     <LinearLayout
@@ -22,11 +23,13 @@
         <TextView
             style="@style/TextAppearance.AppCompat.Title"
             android:layout_width="match_parent"
+            android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:text="Login Now"
             android:textStyle="bold" />
 
         <TextView
+            android:textColor="@color/black"
             style="@style/TextAppearance.AppCompat.Body1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,9 +37,11 @@
 
         <EditText
             android:id="@+id/loginEmailAddress"
+            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:textColorHint="@color/primaryColor"
             android:background="@drawable/edit_text_bkg"
             android:ems="10"
             android:hint="Email"
@@ -45,9 +50,12 @@
 
         <EditText
             android:id="@+id/loginPassword"
+            android:textColor="@color/black"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:textColorHint="@color/primaryColor"
             android:background="@drawable/edit_text_bkg"
             android:ems="10"
             android:hint="Password"
@@ -55,12 +63,13 @@
             android:textSize="16dp" />
 
         <Button
+            android:textColor="@color/white"
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/btn_primary"
-            android:backgroundTint="@null"
+            app:backgroundTint="@color/primaryColor"
             android:text="Login" />
 
         <TextView
@@ -68,6 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:textColor="@color/black"
             android:text="@string/DontHaveAnAccount"
             android:textAlignment="center" />
 

@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent"
     tools:context=".activities.LoginIntro">
 
     <TextView
         android:id="@+id/txtLoginSubHeader"
         style="@style/TextAppearance.AppCompat.Subhead"
-
+        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Isn't life a collection of weird quizzes with \n answers to half the question"
@@ -27,6 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:textColor="@color/black"
         android:text="Welcome to Quizzy"
         app:layout_constraintBottom_toTopOf="@+id/txtLoginSubHeader"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,6 +50,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/primaryColor"
         android:background="@drawable/btn_primary"
         android:text="Get Started"
         android:textStyle="bold"

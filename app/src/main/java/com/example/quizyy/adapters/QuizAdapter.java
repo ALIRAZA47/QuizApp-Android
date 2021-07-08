@@ -6,38 +6,36 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quizyy.R;
 import com.example.quizyy.activities.QuestionActivity;
-import com.example.quizyy.models.Question;
 import com.example.quizyy.models.Quiz;
 import com.example.quizyy.utils.ColorPicker;
 import com.example.quizyy.utils.IconPicker;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.zip.Inflater;
 
 public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder> {
 
     Context context;
+    String courseName = new String();
     ArrayList<Quiz> quizzes = new ArrayList<>();
 
     public QuizAdapter() {
 
     }
 
-    public QuizAdapter(Context context, ArrayList<Quiz> quizzes) {
+    public QuizAdapter(Context context, ArrayList<Quiz> quizzes, String courseName) {
         this.quizzes = quizzes;
         this.context = context;
+        this.courseName = courseName;
+
 
     }
 
@@ -60,8 +58,9 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
             public void onClick(View v) {
                 Intent intent = new Intent(context, QuestionActivity.class);
                 intent.putExtra("DATE", quizzes.get(position).title);
+                intent.putExtra("courseName", courseName);
                 context.startActivity(intent);
-                Toast.makeText(context,  quizzes.get(position).title, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, quizzes.get(position).title, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -73,6 +72,8 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
     }
 
     public class QuizViewHolder extends RecyclerView.ViewHolder {
+        TextView quizCourseName;
+        TextView courseQuizTitle;
         ImageView quizIcon;
         TextView quizTitle;
         CardView cardContainer;
@@ -81,6 +82,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
             super(itemView);
             quizIcon = itemView.findViewById(R.id.quizIcon);
             quizTitle = itemView.findViewById(R.id.quizTitle);
+            quizCourseName = itemView.findViewById(R.id.courseName);
             cardContainer = itemView.findViewById(R.id.cardContainer);
         }
     }
